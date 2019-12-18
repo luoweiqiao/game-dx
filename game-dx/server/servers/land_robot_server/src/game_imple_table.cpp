@@ -97,7 +97,6 @@ bool    CGameLandTable::CanEnterTable(CGamePlayer* pPlayer)
 {
 	if (m_pHostRoom != NULL && m_pHostRoom->GetConsume() == ROOM_CONSUME_TYPE_COIN && IsExistIP(pPlayer->GetIP()))
 	{
-		LOG_DEBUG("uid:%d,roomid:%d,tableid:%d,IsExistIP:%d", pPlayer->GetUID(), GetRoomID(), GetTableID(), IsExistIP(pPlayer->GetIP()));
 		return false;
 	}
     // 限制一个桌子1个或者3个玩家
@@ -133,7 +132,6 @@ bool    CGameLandTable::CanEnterTable(CGamePlayer* pPlayer)
     // 是否有屏蔽玩家
 	if (m_pHostRoom != NULL && m_pHostRoom->GetConsume() == ROOM_CONSUME_TYPE_COIN && IsExistBlock(pPlayer))
 	{
-		LOG_DEBUG("uid:%d,roomid:%d,tableid:%d,IsExistBlock:%d", pPlayer->GetUID(), GetRoomID(), GetTableID(), IsExistBlock(pPlayer));
 		return false;
 	}
 

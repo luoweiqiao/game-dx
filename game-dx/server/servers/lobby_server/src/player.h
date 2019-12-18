@@ -85,7 +85,7 @@ public:
 	// 保存登陆奖励状态
 	void 	SaveLoginInfo();
 	// 领取破产补助
-	bool 	GetBankruptHelp();
+	uint32 	GetBankruptHelp();
 
 	CMissionMgr& GetMissionMgr(){ return m_missionMgr; }
 

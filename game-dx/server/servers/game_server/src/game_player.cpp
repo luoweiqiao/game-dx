@@ -358,11 +358,8 @@ bool 	CGamePlayer::IsExistBlocker(uint32 uid)
 	if(uid == 0)
 		return false;
 	for(uint32 i=0;i<m_blocks.size();++i){
-		if (m_blocks[i] == uid)
-		{
-			LOG_DEBUG("IsExistBlocker m_blocks.size:%d-->%d", m_blocks.size(), uid);
+		if(m_blocks[i] == uid)
 			return true;
-		}			
 	}
 	return false;
 }
@@ -384,11 +381,8 @@ bool 	CGamePlayer::IsExistBlockerIP(uint32 ip)
 	if(ip == 0)
 		return false;
 	for(uint32 i=0;i<m_blockIPs.size();++i){
-		if (m_blockIPs[i] == ip)
-		{
-			LOG_DEBUG("IsExistBlockerIP m_blockIPs.size:%d-->%d", m_blockIPs.size(), ip);
+		if(m_blockIPs[i] == ip)
 			return true;
-		}			
 	}
 	return false;
 }

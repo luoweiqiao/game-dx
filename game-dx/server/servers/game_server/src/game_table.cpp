@@ -398,7 +398,7 @@ bool    CGameTable::CanEnterTable(CGamePlayer* pPlayer)
         LOG_DEBUG("robot is cooling,do not enter table - uid:%d", pPlayer->GetUID());
         return false;
     }
-	LOG_DEBUG("Can Enter Table success. uid:%d", pPlayer->GetUID());
+
     return true;
 }
 bool    CGameTable::CanLeaveTable(CGamePlayer* pPlayer)
@@ -428,7 +428,7 @@ bool    CGameTable::CanSitDown(CGamePlayer* pPlayer,uint16 chairID)
 		return false;
 	}
 	uint16 gameType = m_pHostRoom->GetGameType();
-	if (CCommonLogic::IsBaiRenCount(gameType) && gameType != net::GAME_CATE_TWOEIGHT)
+	if (CCommonLogic::IsBaiRenCount(gameType))
 	{
 		{
 			LOG_DEBUG("bairencount - dont sit down - roomid:%d,tableid:%d,uid:%d,isrobot:%d,chairID:%d", GetRoomID(), GetTableID(), pPlayer->GetUID(), pPlayer->IsRobot(), chairID);
@@ -495,6 +495,7 @@ bool    CGameTable::NeedSitDown()
 	case net::GAME_CATE_WAR:
 	case net::GAME_CATE_FIGHT:
 	case net::GAME_CATE_TWOEIGHT:
+	case net::GAME_CATE_CARCITY:
         return true;
     default:
         return false;
@@ -722,14 +723,14 @@ bool    CGameTable::IsExistBlock(CGamePlayer* pPlayer)
 		{
 			continue;
 		}            
-	    if(pTmp->IsExistBlocker(pPlayer->GetUID()) || pPlayer->IsExistBlocker(pTmp->GetUID()))
+        if(pTmp->IsExistBlocker(pPlayer->GetUID()) || pPlayer->IsExistBlocker(pTmp->GetUID()))
 		{
-			return true;
-        }		
-		if(pTmp->IsExistBlockerIP(pPlayer->GetIP()) || pPlayer->IsExistBlockerIP(pTmp->GetIP()))
-		{			
-			return true;
-		}
+            return true;
+        }
+        if(pTmp->IsExistBlockerIP(pPlayer->GetIP()) || pPlayer->IsExistBlockerIP(pTmp->GetIP()))
+		{
+            return true;
+        }
     }
     return false;
 }
@@ -1810,6 +1811,7 @@ int64 CGameTable::GetBankruptScore()
 		case net::GAME_CATE_FIGHT:
 		case net::GAME_CATE_FRUIT_MACHINE:
 		case net::GAME_CATE_TWOEIGHT:
+		case net::GAME_CATE_CARCITY:
 		{
 			lBankruptScore = m_pHostRoom->GetJettonMin();
 		}break;
@@ -2225,6 +2227,7 @@ bool CGameTable::GetControlPalyerGame(uint16 gameType)
 	case net::GAME_CATE_WAR:
 	case net::GAME_CATE_BULLFIGHT:
 	case net::GAME_CATE_TWOEIGHT:
+	case net::GAME_CATE_CARCITY:
 	{
 		return true;
 	}break;
@@ -2456,6 +2459,7 @@ bool CGameTable::ContinuousPressureBaiRenGame()
 	case net::GAME_CATE_DICE:
 	case net::GAME_CATE_FIGHT:
 	case net::GAME_CATE_TWOEIGHT:
+	case net::GAME_CATE_CARCITY:
 	{
 		return true;
 	}break;
