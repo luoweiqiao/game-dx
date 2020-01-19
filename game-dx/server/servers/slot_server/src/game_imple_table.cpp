@@ -1589,16 +1589,16 @@ bool CGameSlotTable::CheckUserSpinLine(CGamePlayer* pPlayer, uint32 nline, uint3
 		return false;
 	}
 	int64 lJettonScore = (nline * nbet);
-	//if (TableJettonLimmit(pPlayer, lJettonScore, 0) == false)
-	//{
+	if (TableJettonLimmit(pPlayer, lJettonScore, 0) == false)
+	{
 
-	//	LOG_DEBUG("table_jetton_limit - roomid:%d,tableid:%d,uid:%d,curScore:%lld,jettonmin:%lld",
-	//		GetRoomID(), GetTableID(), pPlayer->GetUID(), GetPlayerCurScore(pPlayer), GetJettonMin());
-	//	//net::msg_slot_game_error_rep msg;
-	//	//msg.set_result(net::RESULT_CODE_FAIL);
-	//	//pPlayer->SendMsgToClient(&msg, net::S2C_MSG_SLOT_ERROR_REP);
-	//	return true;
-	//}
+		LOG_DEBUG("table_jetton_limit - roomid:%d,tableid:%d,uid:%d,curScore:%lld,jettonmin:%lld",
+			GetRoomID(), GetTableID(), pPlayer->GetUID(), GetPlayerCurScore(pPlayer), GetJettonMin());
+		//net::msg_slot_game_error_rep msg;
+		//msg.set_result(net::RESULT_CODE_FAIL);
+		//pPlayer->SendMsgToClient(&msg, net::S2C_MSG_SLOT_ERROR_REP);
+		return true;
+	}
 
 	int64 lUserScore = GetPlayerCurScore(pPlayer);//用户总金币
 	if (lJettonScore > lUserScore)

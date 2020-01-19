@@ -49,7 +49,7 @@ enum GAME_CONTROL_MULTI_PALYER_TYPE
 
 
 #define CONTROL_TIME_OUT		(5*60*1000)		//控制超时(5分钟)
-#define BRC_MAX_CONTROL_AREA	(20)			//所有百人场最大的下注区域值
+#define BRC_MAX_CONTROL_AREA	(40)			//所有百人场最大的下注区域值
 
 struct tagJackpotScore
 {

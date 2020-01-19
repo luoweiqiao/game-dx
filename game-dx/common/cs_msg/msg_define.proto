@@ -456,6 +456,10 @@ enum  CLIENT_MSG_ID
 	C2S_MSG_ZAJINHUA_SHOW_CARD					= 3615;// 亮牌
 	S2C_MSG_ZAJINHUA_SHOW_CARD					= 3616;
 
+	S2C_MSG_ZAJINHUA_SEND_MASTER_CARD_REP		= 3620;// 发超级权限用户的牌
+	C2S_MSG_ZAJINHUA_RECV_MASTER_CARD_REQ		= 3621;// 接收超级权限用户的牌
+	S2C_MSG_ZAJINHUA_RECV_MASTER_CARD_REP		= 3622;// 接收超级权限用户的牌
+
 //--------------牛牛游戏消息--------------------------------------------
 	//S2C_MSG_NIUNIU_GAME_FREE_INFO				= 3700;// 游戏信息
 	//S2C_MSG_NIUNIU_GAME_PLAY_INFO				= 3701;
